@@ -86,6 +86,8 @@ Smaller endpoints used for hosting cached data.
 
 Points of Presence enable Amazon CloudFront to securely deliver data, videos, applications, and APIs to customers globally with low latency and high transfer speeds, all within a developer-friendly environment.
 
+![image](https://github.com/user-attachments/assets/bc9c0443-fe65-4d09-8209-49073966d3b4)
+
 ### 1.4. Summary (AWS Global Infrastructure)
 
 AWS (Amazon Web Services) Global Infrastructure is designed to deliver secure, highly available, low-latency cloud services globally
