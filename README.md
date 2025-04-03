@@ -20,11 +20,11 @@
 
 1.6. Outposts
 
-**2. Amazon CloudFront**
+**2. AWS CloudFront**
 
-**3. Regional Edge Caches**
+**3. AWS Regional Edge Caches**
 
-**4. Identity and Access Management IAM**
+**4. AWS Identity and Access Management IAM**
 
 4.1. AWS IAM
 
@@ -34,19 +34,19 @@
 
 4.4. AWS Organizations
 
-**5. IAM Policies**
+**5. AWS IAM Policies**
 
 **6. Amazon Resource Names (ARNs)**
 
-**7. IAM Roles**
+**7. AWS IAM Roles**
 
-**8.  AWS IAM federation**
+**8. AWS IAM federation**
 
-**9. Security Token Service (STS)**
+**9. AWS Security Token Service (STS)**
 
-**10. Revoking Temporary Credentials**
+**10. AWS Revoking Temporary Credentials**
 
-**11. Amazon S3 (Amazon Simple Storage Service)**
+**11. AWS S3 (Amazon Simple Storage Service)**
 
 11.1. S3 storage classes
 
