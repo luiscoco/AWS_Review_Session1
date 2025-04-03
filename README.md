@@ -59,7 +59,9 @@
 AWS (Amazon Web Services) Global Infrastructure is designed to deliver secure, highly available, low-latency cloud services globally
 
 It's made up of several key components that work together to ensure resilience, scalability, and performance.
-  
+
+![image](https://github.com/user-attachments/assets/04b5c65a-7e0e-4395-9c9f-f3a67cb572bf)
+
 ### 1.1. AWS Regions
 
 A physical location around the world where AWS clusters data centers.
