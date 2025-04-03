@@ -372,56 +372,31 @@ In general, there are four scenarios where IAM roles might be used:
 
 In AWS IAM, the term federate (or federation) refers to the process of allowing users from an external identity system (like your corporate directory or a third-party provider)
 
-to access AWS without creating IAM users in your AWS account.
+to access AWS without creating IAM users in your AWS account
 
 ## 9. Security Token Service (STS)
 
 Request temporary, limited-privilege credentials for AWS IAM
 
-STS allows you to provide temporary, limited-privilege credentials for your IAM users, or users that you federate as a part of access authentication. STS is a service that is available globally.
+STS allows you to provide temporary, limited-privilege credentials for your IAM users, or users that you federate as a part of access authentication. STS is a service that is available globally
 
-Temporary credentials can be assumed by authorized identities through the generate credentials (sts:AssumeRole) command.
+Temporary credentials can be assumed by authorized identities through the generate credentials (sts:AssumeRole) command
 
+## 10. Revoking Temporary Credentials
 
+Roles can be assumed by MANY identities who will all get the same permissions. What happens if those credentials are compromised?
 
+Changing Trust policies only effect identities that have not already assumed the role. These policies changes NO impact on existing credentials
 
+Changing the Permissions policy will impact all credentials
 
+Updating the policy with AWSRevokeOlderSessions inline deny for any sessions older than now
 
+This signs out all identities that have currently assumed the role and applies the new policies
 
+## 11. Amazon S3 (Amazon Simple Storage Service) 
 
- 
-Go to Index
-
-10. Revoking Temporary Credentials: Roles can be assumed by MANY identities who will all get the same permissions. What happens if those credentials are compromised?
-
-Changing Trust policies only effect identities that have not already assumed the role. These policies changes NO impact on existing credentials. 
-
-Changing the Permissions policy will impact all credentials. Updating the policy with AWSRevokeOlderSessions inline deny for any sessions older than now. This signs out all identities that have currently assumed the role and applies the new policies.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Go to Index
-
- 
-
-11. Amazon S3 (Amazon Simple Storage Service): Provides infinitely scalable, highly durable object storage in the AWS
-Cloud.
-
- 
+Provides infinitely scalable, highly durable object storage in the AWS Cloud
 
 Stores objects in resources called Buckets, which can be up to 5TB in size, but there are no to total limits to the number of objects stored.
 
@@ -429,57 +404,51 @@ Designed to provide 99.99999% durability and 99.99% availability.
 
 Offered at multiple tiers of pricing based on the frequency the objects are needed, and the speed at which they are required to be retrieved. 
 
+### 11.1. S3 storage classes
 
+Amazon S3 currently provides a range of storage classes offerings to fit our customers needs
 
+Each storage class is purpose-built for varying access patterns at corresponding costs
 
+Amazon S3 is an important service to understand trade-offs and use cases for each storage class
 
+Read these carefully for giveaways that might be included in the questions stem that highlight a storage class as an option
 
+### 11.2. S3 Bucket Policies
 
+A bucket policy that allows a principal (AWS Account ID 11111111111) to read and write to the bucket “sample-bucket-reinvent”
 
-
-
-
-
-
-
-11.1. S3 storage classes: Amazon S3 currently provides a range of storage classes offerings to fit our customers needs. 
-
-Each storage class is purpose-built for varying access patterns at corresponding costs.
-
-Amazon S3 is an important service to understand trade-offs and use cases for each storage class. Read these carefully for giveaways that might be included in the questions stem that highlight a storage class as an option.
-
-
-
- 
-
-
-
-
- 
-
-11.2. S3 Bucket Policies: A bucket policy that allows a principal (AWS Account ID 11111111111) to read and write to the bucket “sample-bucket-reinvent”
-
- 
-
-Who / what can be a principal in an S3 bucket policy?
+**Who / what can be a principal in an S3 bucket policy?**
 
 Valid principals for your bucket policies include
+
 • AWS account and root user
+
 • IAM users
+
 • Federated users (using web identity or SAML federation)
+
 • IAM roles
+
 • Assumed-role sessions
+
 • AWS services
+
 • Anonymous users (public) – not recommended
 
+### 11.3. S3 Transfer Acceleration (S3TA)
 
+Provides faster, long-distance S3 uploads & downloads
 
-11.3. S3 Transfer Acceleration (S3TA): Provides faster, long-distance S3 uploads & downloads
+S3 Transfer Acceleration (S3TA) reduces the variability in Internet routing, congestion and speeds that can affect transfers, and logically shortens the distance to S3 for remote applications
 
-S3 Transfer Acceleration (S3TA) reduces the variability in Internet routing, congestion and speeds that can affect transfers, and logically shortens the distance to S3 for remote applications. S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.
+S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations
 
-Amazon S3 Transfer Acceleration is a feature that speeds up file transfers between clients and Amazon S3 buckets, especially over long distances. It achieves this by routing data through Amazon CloudFront's globally distributed Edge Locations, utilizing the AWS backbone network for optimized performance.
+Amazon S3 Transfer Acceleration is a feature that speeds up file transfers between clients and Amazon S3 buckets, especially over long distances
 
- 
-S3TA helps reduce network variability by physically shortening the distance between your apps and AWS. Any question that speaks to long-distance uploads, or finding ways to increase data transfer with S3 – consider S3TA.
+It achieves this by routing data through Amazon CloudFront's globally distributed Edge Locations, utilizing the AWS backbone network for optimized performance
+
+S3TA helps reduce network variability by physically shortening the distance between your apps and AWS
+
+Any question that speaks to long-distance uploads, or finding ways to increase data transfer with S3 – consider S3TA
 
