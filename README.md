@@ -1,6 +1,6 @@
 # AWS Review Session 1
 
-**Index**
+## Index
 
 **1. AWS Global Infrastructure**
 
