@@ -262,6 +262,8 @@ Policies and technologies used to ensure the appropriate access to technology re
 
 IAM Policies allow you to manage permissions for your workforce and systems to ensure least-privileged access
 
+![image](https://github.com/user-attachments/assets/b9320461-9bed-41c4-bfa3-2a79c1872a5e)
+
 ### 4.2. What is Least Privilege?
 
 A core component in AWS Security Best Practices AND in understanding Access
