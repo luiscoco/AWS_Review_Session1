@@ -78,44 +78,69 @@ easily AZs are connected to each other with fast, private fiber-optic networking
 
 Points of Presence enable Amazon CloudFront to securely deliver data, videos, applications, and APIs to customers globally with low latency and high transfer speeds, all within a developer-friendly environment.
 
- 
+### 1.4. Summary (AWS Global Infrastructure)
 
-1.4. Summary (AWS Global Infrastructure)
+AWS (Amazon Web Services) Global Infrastructure is designed to deliver secure, highly available, low-latency cloud services globally
 
-AWS (Amazon Web Services) Global Infrastructure is designed to deliver secure, highly available, low-latency cloud services globally. It's made up of several key components that work together to ensure resilience, scalability, and performance.
-
+It's made up of several key components that work together to ensure resilience, scalability, and performance
 ________________________________________
+
 🗺️ 1. Regions
+
 •	A Region is a geographic area that contains multiple isolated locations called Availability Zones.
+
 •	AWS has 30+ Regions worldwide (e.g., US East (N. Virginia), EU (Frankfurt), Asia Pacific (Tokyo)).
+
 •	Each Region is completely isolated from the others for fault tolerance and stability.
+
 •	You choose a Region to deploy your resources closer to your users.
 ________________________________________
+
 🏢 2. Availability Zones (AZs)
+
 •	An AZ is one or more data centers with independent power, cooling, and networking.
+
 •	A Region typically has 2 to 6 AZs.
+
 •	They're close enough for low latency but far enough apart to prevent failures from affecting multiple zones.
+
 •	You can design fault-tolerant applications by deploying across multiple AZs.
 ________________________________________
+
 📦 3. Edge Locations
+
 •	Edge locations are part of the AWS Global Content Delivery Network (CDN), used by services like Amazon CloudFront.
+
 •	They’re closer to end users and help cache and deliver content with low latency.
+
 •	There are hundreds of edge locations worldwide.
 ________________________________________
+
 💼 4. Local Zones
+
 •	These extend AWS infrastructure to large metro areas.
+
 •	They bring compute, storage, and other services closer to users for ultra-low latency applications (e.g., video games, AR/VR).
+
 •	Example: Los Angeles Local Zone.
 ________________________________________
+
 🛰️ 5. Wavelength Zones
+
 •	Designed for 5G applications, hosted at telecom providers' data centers.
+
 •	Let you build applications with millisecond latencies to mobile and connected devices.
+
 •	Used with telecom carriers like Verizon, Vodafone.
 ________________________________________
+
 🏭 6. Outposts
+
 •	AWS Outposts are racks of AWS-managed hardware installed in your on-premises data center.
+
 •	You can run AWS services locally but manage them with the same tools/APIs as in the cloud.
 ________________________________________
+
 🌐 Summary Diagram 
 
   [ Global Infrastructure ]
@@ -124,37 +149,17 @@ ________________________________________
 [ Regions ]     [ Edge Network ]
      |                |
 [ AZs ]         [ Edge Locations, Local Zones, Wavelength, Outposts ]
-
-
- 
 ________________________________________
+
 📌 Why It Matters:
+
 •	High availability: Multi-AZ and multi-region designs help with disaster recovery.
+
 •	Performance: Local Zones and Edge Locations reduce latency.
+
 •	Compliance & data residency: Some organizations choose regions for legal/data sovereignty reasons.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Go to Index
-
- 
-
-2. Amazon CloudFront: Security deliver content with low latency and high transfer speeds
+## 2. Amazon CloudFront: Security deliver content with low latency and high transfer speeds
 
 CloudFront is a Content Delivery Network CDN. It reduces latency for end users by leveraging the 450+ Points of Presence in the AWS network to deliver content to a global audience.
 
@@ -164,123 +169,124 @@ Content Delivery Network CDN with low latency, high transfer speeds.
 
 Use cases: deliver fast and secure websites, accelerate dynamic content delivery APIs, stream live and on-demand video, distribute patches and updates.
 
- 
-
-Summary:
+### 2.1. Summary
 
 🌐 What is Amazon CloudFront?
 
 Amazon CloudFront is a Content Delivery Network (CDN) service from AWS.
+
 It delivers your web content (HTML, CSS, JavaScript, images, videos, APIs) quickly and securely to users around the world using AWS’s global network of edge locations (Points of Presence).
 ________________________________________
+
 🚀 Key Purpose
+
 ✅ Speed up content delivery
+
 ✅ Reduce latency
+
 ✅ Offload traffic from origin servers
+
 ✅ Secure content with encryption and access control
 ________________________________________
+
 📦 How it Works (Step-by-Step)
+
 1.	User Requests Content
+
 o	A user visits your website or app and requests content (e.g., an image or video).
+
 2.	CloudFront Checks Cache at Edge Location
+
 o	CloudFront routes the request to the nearest Edge Location (PoP).
+
 o	If the content is cached there (called a “cache hit”), it’s served immediately.
+
 3.	No Cache? CloudFront Fetches from Origin
+
 o	If the content is not cached (a “cache miss”), CloudFront retrieves it from the origin server (e.g., S3, EC2, or external server).
+
 4.	Content Delivered and Cached
+
 o	The content is sent to the user and stored (cached) in the Edge Location for future requests.
 
- 
+## 3. Regional Edge Caches: Regional edge caches for less popular content
 
+Content not popular enough to store in a POPs (Point Of Presence) will be stored in a regional cache to get more content closer to users
 
+Useful for content with an over-time decay in popularity.
 
+CloudFront locations between origin server and POPs, with larger cache than individual POPs. Serves as intermediary hop for content
 
+Requests go from viewer, to edge location, to regional edge caches, checking for content availability at each site before requesting directly from origin server.
 
-
-
-Go to Index
-
-3. Regional Edge Caches: Regional edge caches for less popular content
-
-Content not popular enough to store in a POPs (Point Of Presence) will be stored in a regional cache to get more content closer to users. Useful for content with an over-time decay in popularity.
-
-CloudFront locations between origin server and POPs, with larger cache than individual POPs. Serves as intermediary hop for content. Requests go from viewer, to edge location, to regional edge caches, checking for content availability at each site before requesting directly from origin server.
-
- 
-
-
-Summary: 
+### 3.1. Summary
 
 🌐 What are AWS Regional Edge Caches?
+
 Regional Edge Caches are an intermediate caching layer between:
+
 1.	CloudFront Edge Locations (PoPs), and
+
 2.	Your origin servers (e.g., S3, EC2, API Gateway, or any custom origin)
+
 They sit closer to the origin than the edge locations but farther from the users — like a “middle tier.”
 ________________________________________
+
 📦 Why do they exist?
+
 •	To reduce the load on origin servers
+
 •	To optimize cache-hit ratio
+
 •	To help CloudFront scale better for large global content delivery
-When CloudFront edge locations don't have the requested content, they try the regional edge cache first before going all the way to the origin.
+
+When CloudFront edge locations don't have the requested content, they try the regional edge cache first before going all the way to the origin
  
+## 4. Identity and Access Management IAM: policies and technologies used to ensure the appropriate access to technology resources
 
-Go to Index
+### 4.1. AWS IAM provides fine-grained access control across all of AWS. With IAM, you can specify who can access which service and resources, under which conditions
 
+IAM Policies allow you to manage permissions for your workforce and systems to ensure least-privileged access
+
+### 4.2. What is Least Privilege?: A core component in AWS Security Best Practices AND in understanding Access
+
+The principle of Least Privilege is that a user/resource should be granted the least amount of permissions or privileges needed to complete their job role
+
+If a user does not need an access right, they should not have that access right
+
+The exam will sometimes ask you to evaluate permissions/policies documents in response to providing access to a user
+
+These questions assume that you understand the principle of least privilege
+
+### 4.3. IAM Users and Groups: the building blocks of AWS Identity and Access Management
+
+**IAM Users**: an IAM User is an entity that is created in AWS to represent the person, or application, that uses it to interact with AWS
+
+**IAM Groups**: an IAM Group is a collection of IAM users. User groups let you specify permissions for multiple users, which can make it easier to manage the permissions for those users
+
+Example: you could have a user group called Admins and give that user group typical administrator permissions
  
+### 4.4. AWS Organizations: an account management service that enables account consolidation and organization
 
-4. Identity and Access Management IAM: policies and technologies used to ensure the appropriate access to technology resources.
+A way to consolidate accounts, assign permissions to OUs, and automate the onboarding of new team members based on job function
 
-4.1. AWS IAM provides fine-grained access control across all of AWS. With IAM, you can specify who can access which service and resources, under which conditions.
+**Organizations**: an entity created to consolidate your AWS accounts
 
-IAM Policies allow you to manage permissions for your workforce and systems to ensure least-privileged access. 
+**Root**: parent container for all the accounts for your organization
 
- 
-
-4.2. What is Least Privilege?: A core component in AWS Security Best Practices AND in understanding Access.
-
-The principle of Least Privilege is that a user/resource should be granted the least amount of permissions or privileges needed to complete their job role.
-
-If a user does not need an access right, they should not have that access right.
-
-The exam will sometimes ask you to evaluate permissions/policies documents in response to providing access to a user. These questions assume that you understand the principle of least privilege. 
-
-4.3. IAM Users and Groups: the building blocks of AWS Identity and Access Management
-
- 
-
-
-IAM Users: an IAM User is an entity that is created in AWS to represent the person, or application, that uses it to interact with AWS. 
-
-IAM Groups: an IAM Group is a collection of IAM users. User groups let you specify permissions for multiple users, which can make it easier to manage the permissions for those users. 
-
-Example: you could have a user group called Admins and give that user group typical administrator permissions.
-
-
-Go to Index
-
- 
-
-4.4. AWS Organizations: an account management service that enables account consolidation and organization.
-A way to consolidate accounts, assign permissions to OUs, and automate the onboarding of new team members based on job function. 
-
-Organizations: an entity created to consolidate your AWS accounts.
-
-Root: parent container for all the accounts for your organization.
-
-Organizational Unit (OU): a container for accounts within a root. An OU can also contain other OUs.
-
- 
+**Organizational Unit (OU)**: a container for accounts within a root. An OU can also contain other OUs
 
 An account management service that enables account consolidation and organization.
-Account: an account in an organization is a standard AWS account that contains AWS resources and identities. 
-Service Control Policy (SCP): a policy that specifies the services and actions that users and roles can use in the accounts that the SCP affects.
-Tagging: a best practices for your OUs to keep track of your AWS accounts and resources. This assists with more granular monitoring and logging of your AWS environment.
 
-Go to Index
+**Account**: an account in an organization is a standard AWS account that contains AWS resources and identities. 
 
- 
+**Service Control Policy (SCP)**: a policy that specifies the services and actions that users and roles can use in the accounts that the SCP affects.
 
-5. IAM Policies: IAM Policies are the bedrock of strong IAM security. Understanding how the policies work and being able to interpret them is critical for success as an Architect and on the exam.
+**Tagging**: a best practices for your OUs to keep track of your AWS accounts and resources. This assists with more granular monitoring and logging of your AWS environment.
+
+## 5. IAM Policies
+
+IAM Policies are the bedrock of strong IAM security. Understanding how the policies work and being able to interpret them is critical for success as an Architect and on the exam.
 
 Identity Policies are IAM policies that are applied to identities. This can include both users as well as roles that users can assume. These are different than resource policies.
 
