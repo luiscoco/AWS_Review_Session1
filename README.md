@@ -285,7 +285,9 @@ The building blocks of AWS Identity and Access Management
 **IAM Groups**: an IAM Group is a collection of IAM users. User groups let you specify permissions for multiple users, which can make it easier to manage the permissions for those users
 
 Example: you could have a user group called Admins and give that user group typical administrator permissions
- 
+
+![image](https://github.com/user-attachments/assets/930a38d6-ed10-4ae9-b5b7-a494855c5b3f)
+
 ### 4.4. AWS Organization
 
 An account management service that enables account consolidation and organization
