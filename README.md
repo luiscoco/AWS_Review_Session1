@@ -155,7 +155,9 @@ ________________________________________
 
 **Compliance & data residency**: Some organizations choose regions for legal/data sovereignty reasons.
 
-## 2. Amazon CloudFront: Security deliver content with low latency and high transfer speeds
+## 2. Amazon CloudFront
+
+Security deliver content with low latency and high transfer speeds
 
 CloudFront is a Content Delivery Network CDN. It reduces latency for end users by leveraging the 450+ Points of Presence in the AWS network to deliver content to a global audience.
 
@@ -205,7 +207,9 @@ If the content is not cached (a “cache miss”), CloudFront retrieves it from 
 
 The content is sent to the user and stored (cached) in the Edge Location for future requests.
 
-## 3. Regional Edge Caches: Regional edge caches for less popular content
+## 3. Regional Edge Caches
+
+Regional edge caches for less popular content
 
 Content not popular enough to store in a POPs (Point Of Presence) will be stored in a regional cache to get more content closer to users
 
@@ -221,14 +225,14 @@ Requests go from viewer, to edge location, to regional edge caches, checking for
 
 Regional Edge Caches are an intermediate caching layer between:
 
-1.	CloudFront Edge Locations (PoPs), and
+CloudFront Edge Locations (PoPs), and
 
-2.	Your origin servers (e.g., S3, EC2, API Gateway, or any custom origin)
+Your origin servers (e.g., S3, EC2, API Gateway, or any custom origin)
 
 They sit closer to the origin than the edge locations but farther from the users — like a “middle tier.”
 ________________________________________
 
-📦 Why do they exist?
+**Why do they exist?**
 
 •	To reduce the load on origin servers
 
@@ -238,13 +242,17 @@ ________________________________________
 
 When CloudFront edge locations don't have the requested content, they try the regional edge cache first before going all the way to the origin
  
-## 4. Identity and Access Management IAM: policies and technologies used to ensure the appropriate access to technology resources
+## 4. Identity and Access Management IAM
+
+Policies and technologies used to ensure the appropriate access to technology resources
 
 ### 4.1. AWS IAM provides fine-grained access control across all of AWS. With IAM, you can specify who can access which service and resources, under which conditions
 
 IAM Policies allow you to manage permissions for your workforce and systems to ensure least-privileged access
 
-### 4.2. What is Least Privilege?: A core component in AWS Security Best Practices AND in understanding Access
+### 4.2. What is Least Privilege?
+
+A core component in AWS Security Best Practices AND in understanding Access
 
 The principle of Least Privilege is that a user/resource should be granted the least amount of permissions or privileges needed to complete their job role
 
@@ -254,7 +262,9 @@ The exam will sometimes ask you to evaluate permissions/policies documents in re
 
 These questions assume that you understand the principle of least privilege
 
-### 4.3. IAM Users and Groups: the building blocks of AWS Identity and Access Management
+### 4.3. IAM Users and Groups
+
+The building blocks of AWS Identity and Access Management
 
 **IAM Users**: an IAM User is an entity that is created in AWS to represent the person, or application, that uses it to interact with AWS
 
@@ -262,7 +272,9 @@ These questions assume that you understand the principle of least privilege
 
 Example: you could have a user group called Admins and give that user group typical administrator permissions
  
-### 4.4. AWS Organizations: an account management service that enables account consolidation and organization
+### 4.4. AWS Organization
+
+An account management service that enables account consolidation and organization
 
 A way to consolidate accounts, assign permissions to OUs, and automate the onboarding of new team members based on job function
 
@@ -282,19 +294,30 @@ An account management service that enables account consolidation and organizatio
 
 ## 5. IAM Policies
 
-IAM Policies are the bedrock of strong IAM security. Understanding how the policies work and being able to interpret them is critical for success as an Architect and on the exam.
+IAM Policies are the bedrock of strong IAM security
 
-Identity Policies are IAM policies that are applied to identities. This can include both users as well as roles that users can assume. These are different than resource policies.
+Understanding how the policies work and being able to interpret them is critical for success as an Architect and on the exam
 
-Implicit versus Explicit Allow/Deny: The default response to all requests is an Implicit Deny. This stance can be overridden by allowing the user access with a permissions policy – this grants the user access because it has been Explicitly Allowed. The same process can be done with an Explicit Deny policy. This will deny access regardless of the permissions the user might have.
+**Identity Policies**: are IAM policies that are applied to identities
 
+This can include both users as well as roles that users can assume
 
+These are different than resource policies
+
+**Implicit versus Explicit Allow/Deny**: The default response to all requests is an Implicit Deny
+
+This stance can be overridden by allowing the user access with a permissions policy – this grants the user access because it has been Explicitly Allowed
+
+The same process can be done with an Explicit Deny policy
+
+This will deny access regardless of the permissions the user might have
  
-Resource Policies: unlike an identity-based policy, a resource-based policy specifies WHO (which principal) can access that resource. The principals identified within a resource-based policy include accounts, IAM users, federated users, IAM roles, assumed-role sessions, or AWS services.
+**Resource Policies**: unlike an identity-based policy, a resource-based policy specifies WHO (which principal) can access that resource
+
+The principals identified within a resource-based policy include accounts, IAM users, federated users, IAM roles, assumed-role sessions, or AWS services.
 
 Resource-based policies are attached to a resource.
  
-
 A policy samples: AWS Identity and Access Management (IAM) policy
  
 Enable/Disable Region (Specific to Hong Kong): So this allows enabling or disabling the Hong Kong (ap-east-1) region, and only that region.
@@ -302,90 +325,56 @@ Enable/Disable Region (Specific to Hong Kong): So this allows enabling or disabl
 View Console Permissions: So this allows read-only access to view account info and available regions.
 
 This IAM policy:
+
 1.	Grants permission to enable/disable only the ap-east-1 (Hong Kong) region.
+
 2.	Grants permission to view AWS account details and list available regions.
 
 Policy interpretation: This flow chart provides details about how the decision is made as AWS authenticates the principal that makes the request. AWS evaluates the policy types in this order.
 
 Flowchart representing how AWS evaluates permissions to determine whether a user or role is allowed or denied access to perform an action.
 
- 
+## 6. Amazon Resource Names (ARN)
 
+A way to uniquely identify AWS resources
 
+We require an ARN when you need to specify a resource unambiguously across all of AWS, such as in IAM policies, AWS RDS tags, and API calls
 
+ARN Format: The specific formats depend on the resource. To use an ARN, replace the italicized text with the resource-specific information
 
+Be aware that the ARNs for some resources omit the Region, the account ID, or both the Region and the account ID
 
+## 7. IAM Roles
 
-
-
-
-
-Go to Index
-
-6. Amazon Resource Names (ARN): A way to uniquely identify AWS resources.
-
-We require an ARN when you need to specify a resource unambiguously across all of AWS, such as in IAM policies, AWS RDS tags, and API calls.
-
-ARN Format: The specific formats depend on the resource. To use an ARN, replace the italicized text with the resource-specific information.
-
-Be aware that the ARNs for some resources omit the Region, the account ID, or both the Region and the account ID. 
-
- 
-
-Go to Index
-
- 
-
-7. IAM Roles: Roles are a way for users to temporarily gain permissions.
+Roles are a way for users to temporarily gain permissions
 
 AWS Roles have the same makeup as an IAM user with the following differences: 
 
--	An IAM role does not have long term credentials associated with it. A principal (user, machine, or authenticated identity) assumes the role and inherits permissions assigned to the user.  
+-	An IAM role does not have long term credentials associated with it. A principal (user, machine, or authenticated identity) assumes the role and inherits permissions assigned to the user
 
--	Temporary access is granted using Security Token Service (STS). Token expiration reduces the risks associated with credentials leaking or being reused. 
+-	Temporary access is granted using Security Token Service (STS). Token expiration reduces the risks associated with credentials leaking or being reused
 
--	An IAM role has a trust policy that defines which conditions must be met to allow other principals to assume it. 
+-	An IAM role has a trust policy that defines which conditions must be met to allow other principals to assume it
 
 In general, there are four scenarios where IAM roles might be used:
 
--	One AWS service accesses another AWS Service.
--	One AWS account accesses another AWS account.
+-	One AWS service accesses another AWS Service
+
+-	One AWS account accesses another AWS account
+
 -	A third-party web identity needs access (for example: Google, Facebook, Cognito) 
+
 -	Authentication using SAML2.0 federation (enables SSO)
 
+## 8. AWS IAM federation
 
-Go to Index
+In AWS IAM, the term federate (or federation) refers to the process of allowing users from an external identity system (like your corporate directory or a third-party provider)
 
-8. AWS IAM federation: In AWS IAM, the term federate (or federation) refers to the process of allowing users from an external identity system (like your corporate directory or a third-party provider) to access AWS without creating IAM users in your AWS account.
+to access AWS without creating IAM users in your AWS account.
 
- 
+## 9. Security Token Service (STS)
 
- 
-
- 
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-
-
- 
-
- 
-
-Go to Index
-
- 
-
-9. Security Token Service (STS): Request temporary, limited-privilege credentials for AWS IAM
+Request temporary, limited-privilege credentials for AWS IAM
 
 STS allows you to provide temporary, limited-privilege credentials for your IAM users, or users that you federate as a part of access authentication. STS is a service that is available globally.
 
