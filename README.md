@@ -213,6 +213,8 @@ If the content is not cached (a “cache miss”), CloudFront retrieves it from 
 
 The content is sent to the user and stored (cached) in the Edge Location for future requests.
 
+![image](https://github.com/user-attachments/assets/6c20f812-291f-4c32-9a6e-2f5200716d05)
+
 ## 3. Regional Edge Caches
 
 Regional edge caches for less popular content
@@ -225,9 +227,11 @@ CloudFront locations between origin server and POPs, with larger cache than indi
 
 Requests go from viewer, to edge location, to regional edge caches, checking for content availability at each site before requesting directly from origin server.
 
+![image](https://github.com/user-attachments/assets/b8fe5de8-67f8-42be-9530-d9c3576b3790)
+
 ### 3.1. Summary
 
-🌐 What are AWS Regional Edge Caches?
+**What are AWS Regional Edge Caches?**
 
 Regional Edge Caches are an intermediate caching layer between:
 
