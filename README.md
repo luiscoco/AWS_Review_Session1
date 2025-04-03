@@ -147,16 +147,6 @@ ________________________________________
 •	You can run AWS services locally but manage them with the same tools/APIs as in the cloud.
 ________________________________________
 
-🌐 **Diagram**
-
-  [ Global Infrastructure ]
-           |
-  ┌────────┴────────┐
-[ Regions ]     [ Edge Network ]
-     |                |
-[ AZs ]         [ Edge Locations, Local Zones, Wavelength, Outposts ]
-________________________________________
-
 📌 **Why It Matters**:
 
 **High availability**: Multi-AZ and multi-region designs help with disaster recovery.
