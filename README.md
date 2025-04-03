@@ -151,6 +151,8 @@ ________________________________________
 •	You can run AWS services locally but manage them with the same tools/APIs as in the cloud.
 ________________________________________
 
+![image](https://github.com/user-attachments/assets/2021e42d-c67c-43ae-8d88-0bd8d0556129)
+
 📌 **Why It Matters**:
 
 **High availability**: Multi-AZ and multi-region designs help with disaster recovery.
