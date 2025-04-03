@@ -251,7 +251,9 @@ ________________________________________
 •	To help CloudFront scale better for large global content delivery
 
 When CloudFront edge locations don't have the requested content, they try the regional edge cache first before going all the way to the origin
- 
+
+![image](https://github.com/user-attachments/assets/a3f3122d-20e0-4da0-a5e2-9ad55dbd0ee9)
+
 ## 4. Identity and Access Management IAM
 
 Policies and technologies used to ensure the appropriate access to technology resources
