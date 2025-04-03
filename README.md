@@ -60,19 +60,25 @@ AWS (Amazon Web Services) Global Infrastructure is designed to deliver secure, h
 
 It's made up of several key components that work together to ensure resilience, scalability, and performance.
   
-### 1.1. AWS Regions : A physical location around the world where AWS clusters data centers.
+### 1.1. AWS Regions
+
+A physical location around the world where AWS clusters data centers.
 
 Each AWS Region consists of multiple, isolated, and physically separate Availability Zones.
 
 AWS Regions are totally isolated from each other, creating the greatest possible fault tolerance and stability
 
-### 1.2. AWS Availability Zones (AZs): One or more discrete data centers with redundant power, networking, and connectivity in an AWS Region.
+### 1.2. AWS Availability Zones (AZs)
+
+One or more discrete data centers with redundant power, networking, and connectivity in an AWS Region.
 
 AZs give customers the ability to operate production applications and databases that are more highly available, fault tolerant, and scalable than would be possible from a single data center
 
 easily AZs are connected to each other with fast, private fiber-optic networking, enabling you to architect applications that automatically fail-over between AZs without interruption.
  
-### 1.3. Points of Presence (PoP): Smaller endpoints used for hosting cached data.
+### 1.3. Points of Presence (PoP)
+
+Smaller endpoints used for hosting cached data.
 
 600+ Edge Locations and 13 regional mid-tier regional cache servers
 
@@ -85,7 +91,7 @@ AWS (Amazon Web Services) Global Infrastructure is designed to deliver secure, h
 It's made up of several key components that work together to ensure resilience, scalability, and performance
 ________________________________________
 
-🗺️ 1. Regions
+🗺️ **Regions**
 
 •	A Region is a geographic area that contains multiple isolated locations called Availability Zones.
 
@@ -96,7 +102,7 @@ ________________________________________
 •	You choose a Region to deploy your resources closer to your users.
 ________________________________________
 
-🏢 2. Availability Zones (AZs)
+🏢 **Availability Zones (AZs)**
 
 •	An AZ is one or more data centers with independent power, cooling, and networking.
 
@@ -107,7 +113,7 @@ ________________________________________
 •	You can design fault-tolerant applications by deploying across multiple AZs.
 ________________________________________
 
-📦 3. Edge Locations
+📦 **Edge Locations**
 
 •	Edge locations are part of the AWS Global Content Delivery Network (CDN), used by services like Amazon CloudFront.
 
@@ -116,7 +122,7 @@ ________________________________________
 •	There are hundreds of edge locations worldwide.
 ________________________________________
 
-💼 4. Local Zones
+💼 **Local Zones**
 
 •	These extend AWS infrastructure to large metro areas.
 
@@ -125,7 +131,7 @@ ________________________________________
 •	Example: Los Angeles Local Zone.
 ________________________________________
 
-🛰️ 5. Wavelength Zones
+🛰️ **Wavelength Zones**
 
 •	Designed for 5G applications, hosted at telecom providers' data centers.
 
@@ -134,14 +140,14 @@ ________________________________________
 •	Used with telecom carriers like Verizon, Vodafone.
 ________________________________________
 
-🏭 6. Outposts
+🏭 **Outposts**
 
 •	AWS Outposts are racks of AWS-managed hardware installed in your on-premises data center.
 
 •	You can run AWS services locally but manage them with the same tools/APIs as in the cloud.
 ________________________________________
 
-🌐 Summary Diagram 
+🌐 **Diagram**
 
   [ Global Infrastructure ]
            |
@@ -151,13 +157,13 @@ ________________________________________
 [ AZs ]         [ Edge Locations, Local Zones, Wavelength, Outposts ]
 ________________________________________
 
-📌 Why It Matters:
+📌 **Why It Matters**:
 
-•	High availability: Multi-AZ and multi-region designs help with disaster recovery.
+**High availability**: Multi-AZ and multi-region designs help with disaster recovery.
 
-•	Performance: Local Zones and Edge Locations reduce latency.
+**Performance**: Local Zones and Edge Locations reduce latency.
 
-•	Compliance & data residency: Some organizations choose regions for legal/data sovereignty reasons.
+**Compliance & data residency**: Some organizations choose regions for legal/data sovereignty reasons.
 
 ## 2. Amazon CloudFront: Security deliver content with low latency and high transfer speeds
 
@@ -171,14 +177,14 @@ Use cases: deliver fast and secure websites, accelerate dynamic content delivery
 
 ### 2.1. Summary
 
-🌐 What is Amazon CloudFront?
+**What is Amazon CloudFront**?
 
 Amazon CloudFront is a Content Delivery Network (CDN) service from AWS.
 
 It delivers your web content (HTML, CSS, JavaScript, images, videos, APIs) quickly and securely to users around the world using AWS’s global network of edge locations (Points of Presence).
 ________________________________________
 
-🚀 Key Purpose
+**Key Purpose**
 
 ✅ Speed up content delivery
 
@@ -189,25 +195,25 @@ ________________________________________
 ✅ Secure content with encryption and access control
 ________________________________________
 
-📦 How it Works (Step-by-Step)
+**How it Works (Step-by-Step)**
 
 1.	User Requests Content
 
-o	A user visits your website or app and requests content (e.g., an image or video).
+A user visits your website or app and requests content (e.g., an image or video).
 
 2.	CloudFront Checks Cache at Edge Location
 
-o	CloudFront routes the request to the nearest Edge Location (PoP).
+CloudFront routes the request to the nearest Edge Location (PoP).
 
-o	If the content is cached there (called a “cache hit”), it’s served immediately.
+If the content is cached there (called a “cache hit”), it’s served immediately.
 
 3.	No Cache? CloudFront Fetches from Origin
 
-o	If the content is not cached (a “cache miss”), CloudFront retrieves it from the origin server (e.g., S3, EC2, or external server).
+If the content is not cached (a “cache miss”), CloudFront retrieves it from the origin server (e.g., S3, EC2, or external server).
 
 4.	Content Delivered and Cached
 
-o	The content is sent to the user and stored (cached) in the Edge Location for future requests.
+The content is sent to the user and stored (cached) in the Edge Location for future requests.
 
 ## 3. Regional Edge Caches: Regional edge caches for less popular content
 
